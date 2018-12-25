@@ -1,0 +1,9 @@
+type Query {
+    movies: [Movie]!
+}
+
+type Movie {
+    id: String
+    original_title: String
+    adult: Boolean
+}

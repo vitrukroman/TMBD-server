@@ -1,16 +1,18 @@
-import { ApolloServer, gql, ServerInfo } from "apollo-server";
+import { ApolloServer, ServerInfo } from "apollo-server";
 import logger from "./logger";
 import serverConfig from "./serverConfig";
 
-const typeDefs = gql`
+const typeDefs = require("./schema/schema.graphql");
 
-  `;
-
-const resolvers = {};
+const resolvers = {
+  Query: {
+    movies: () => [],
+  },
+};
 
 const server = new ApolloServer({typeDefs, resolvers});
 
-server.listen(serverConfig.url)
+server.listen(serverConfig.port)
 .then((serverInfo: ServerInfo) => {
-  logger.info("server ready at ", serverInfo.url);
+  logger.info("server ready at " + serverInfo.url);
 });

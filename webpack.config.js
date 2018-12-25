@@ -14,6 +14,11 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader'
+      }
     ],
   },
   entry: "./src/index.ts",
@@ -30,6 +35,6 @@ module.exports = {
   target: "node",
   watch: process.env.NODE_ENV === "development",
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js", ".graphql"],
   },
 };

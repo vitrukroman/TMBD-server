@@ -8,7 +8,7 @@
     "start:dev": "concurrently \"npm run build:dev\" \"sleep 10 && nodemon\"",
     "build": "NODE_ENV=production webpack",
     "build:dev": "NODE_ENV=development webpack",
-    "start": "NODE_ENV=production node dist/server",
+    "start": "NODE_ENV=production node dist/index",
     "lint": "tslint --fix -c tslint.json --project ."
   },
   "repository": {
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@types/graphql": "^14.0.3",
+    "apollo-datasource-rest": "^0.2.1",
     "apollo-server": "^2.3.1",
     "dotenv": "^6.2.0",
     "graphql": "^14.0.2",
