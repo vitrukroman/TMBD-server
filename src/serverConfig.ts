@@ -15,13 +15,15 @@ class ServerConfig {
   public readonly host: string;
   public readonly port: string;
   public readonly protocol: string;
-  public readonly tmdbAPI: string;
+  public readonly tmdbAPIUrl: string;
+  public readonly tmdbAPIKey: string;
 
   constructor() {
     this.host = ServerConfig._getEnvVariable("HOST");
     this.port = ServerConfig._getEnvVariable("PORT");
     this.protocol = ServerConfig._getEnvVariable("PROTOCOL");
-    this.tmdbAPI = ServerConfig._getEnvVariable("TMDB_API");
+    this.tmdbAPIUrl = ServerConfig._getEnvVariable("TMDB_API_URL");
+    this.tmdbAPIKey = ServerConfig._getEnvVariable("TMDB_API_KEY");
   }
 
   get url() {
