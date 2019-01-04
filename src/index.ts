@@ -1,43 +1,17 @@
 import { ApolloServer, ServerInfo } from "apollo-server";
 import { DataSources } from "apollo-server-core/dist/graphqlOptions";
-import { GraphQLFieldResolver } from "graphql";
-import TmdbAPI from "./dataSources/tmdb/tmdbAPI";
+import TmdbAPI from "./graphql/dataSources/tmdb/tmdbAPI";
+import { IContext } from "./graphql/resolvers/context";
+import resolvers from "./graphql/resolvers/resolvers";
 import logger from "./logger";
 import serverConfig from "./serverConfig";
 
-const typeDefs = require("./schema/schema.graphql");
-
-const movieResolver: GraphQLFieldResolver<any, IContext> = async (_source, args, context) => {
-  const results = await Promise.all([
-    context.dataSources.tmdbAPI.getMovie(args.id),
-    context.dataSources.tmdbAPI.getMovieKeywords(args.id),
-    context.dataSources.tmdbAPI.getSimilarMovies(args.id),
-  ]);
-
-  return {
-    ...results[0],
-    keywords: results[1].keywords,
-    similarMovies: results[2].results,
-  };
-};
-
-const resolvers = {
-  Query: {
-    movie: movieResolver,
-    movies: () => [],
-  },
-};
-
-interface IContext {
-  dataSources: {
-    tmdbAPI: TmdbAPI;
-  };
-}
+const typeDefs = require("./graphql/schema/schema.graphql");
 
 const server = new ApolloServer({
   typeDefs, resolvers, dataSources: (): DataSources<IContext> => {
     return {
-      tmdbAPI: new TmdbAPI(),
+      tmdbAP2I: new TmdbAPI(),
     };
   },
 });
