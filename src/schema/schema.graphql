@@ -27,6 +27,8 @@ type Movie {
     video: Boolean!
     vote_average: Float!
     vote_count: Int!
+    keywords: [Keyword!]
+    similarMovies: [Movie!]!
 }
 
 
@@ -60,3 +62,10 @@ enum Status {
     Released
     Canceled
 }
+
+type Keyword {
+    id: Int!
+    name: String!
+}
+
+
