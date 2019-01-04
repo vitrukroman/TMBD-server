@@ -3,22 +3,27 @@ import logger from "./logger";
 import serverConfig from "./serverConfig";
 import TmdbAPI from "./dataSources/tmdb/tmdbAPI";
 import { DataSources } from "apollo-server-core/dist/graphqlOptions";
+import { GraphQLFieldResolver } from "graphql";
 
 const typeDefs = require("./schema/schema.graphql");
 
-const movieResolver = async <T, T1, T2>(_source: T, args: { id: string }, context: DataSources<IContext>) => {
-  return context.dataSources.tmdbAPI.getMovie(1);
-}
+const movieResolver: GraphQLFieldResolver<any, IContext> = (_source, args, context) => {
+  return context.dataSources.tmdbAPI.getMovie(args.id);
+};
 
 const resolvers = {
   Query: {
-    movie: movieResolver,
+    movie: {
+      resolve: movieResolver,
+    },
     movies: () => [],
   },
 };
 
 interface IContext {
-  tmdbAPI: TmdbAPI;
+  dataSources: {
+    tmdbAPI: TmdbAPI;
+  }
 }
 
 const server = new ApolloServer({

@@ -12,7 +12,7 @@ class TmdbAPI extends RESTDataSource {
   }
 
   public async getMovie(id: number) {
-    return this.get(`movie/${id}`);
+    return await this.get(`movie/${id}`);
   }
 
   public async getPopularMovies(page = 1) {

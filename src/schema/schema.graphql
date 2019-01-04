@@ -1,10 +1,13 @@
 type Query {
-    movie: Movie
+    movie (id: String!) : Movie
     movies: [Movie]!
 }
 
 type Movie {
     id: String
     original_title: String
+    """
+    is film for adult audience
+    """
     adult: Boolean
 }
