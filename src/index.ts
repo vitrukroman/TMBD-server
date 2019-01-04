@@ -1,9 +1,9 @@
 import { ApolloServer, ServerInfo } from "apollo-server";
-import logger from "./logger";
-import serverConfig from "./serverConfig";
-import TmdbAPI from "./dataSources/tmdb/tmdbAPI";
 import { DataSources } from "apollo-server-core/dist/graphqlOptions";
 import { GraphQLFieldResolver } from "graphql";
+import TmdbAPI from "./dataSources/tmdb/tmdbAPI";
+import logger from "./logger";
+import serverConfig from "./serverConfig";
 
 const typeDefs = require("./schema/schema.graphql");
 
@@ -23,14 +23,14 @@ const resolvers = {
 interface IContext {
   dataSources: {
     tmdbAPI: TmdbAPI;
-  }
+  };
 }
 
 const server = new ApolloServer({
   typeDefs, resolvers, dataSources: (): DataSources<IContext> => {
     return {
       tmdbAPI: new TmdbAPI(),
-    }
+    };
   },
 });
 

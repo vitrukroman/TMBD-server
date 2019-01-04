@@ -7,10 +7,6 @@ class TmdbAPI extends RESTDataSource {
     this.baseURL = serverConfig.tmdbAPIUrl;
   }
 
-  protected willSendRequest(request: RequestOptions) {
-    request.params.set("api_key", serverConfig.tmdbAPIKey);
-  }
-
   public async getMovie(id: number) {
     return await this.get(`movie/${id}`);
   }
@@ -21,6 +17,10 @@ class TmdbAPI extends RESTDataSource {
       page,
     });
     return data.results;
+  }
+
+  protected willSendRequest(request: RequestOptions) {
+    request.params.set("api_key", serverConfig.tmdbAPIKey);
   }
 }
 
