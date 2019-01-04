@@ -11,7 +11,7 @@ const typeDefs = require("./graphql/schema/schema.graphql");
 const server = new ApolloServer({
   typeDefs, resolvers, dataSources: (): DataSources<IContext> => {
     return {
-      tmdbAP2I: new TmdbAPI(),
+      tmdbAPI: new TmdbAPI(),
     };
   },
 });
