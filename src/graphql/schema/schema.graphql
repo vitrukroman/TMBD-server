@@ -1,0 +1,71 @@
+type Query {
+    movie (id: Int!) : Movie
+    movies: [Movie]!
+}
+
+type Movie {
+    adult: Boolean
+    budget: Int!
+    genres: [Genre!]!
+    homepage: String
+    id: Int!
+    imdb_id: String
+    original_language: String!
+    original_title: String!
+    overview: String
+    popularity: Float!
+    poster_path: String
+    production_companies: [ProductionCompany!]!
+    production_countries: [ProductionCountry!]!
+    release_date: String!
+    revenue: Int!
+    runtime: Int
+    spoken_languages: [SpokenLanguage!]!
+    status: Status!
+    tagline: String
+    title: String!
+    video: Boolean!
+    vote_average: Float!
+    vote_count: Int!
+    keywords: [Keyword!]
+    similarMovies: [Movie!]!
+}
+
+
+type Genre {
+    id: String!
+    name: String!
+}
+
+type ProductionCompany {
+    name: String!
+    id: Int!
+    logo_path: String
+    origin_country: String!
+}
+
+type ProductionCountry {
+    iso_3166_1: String!
+    name: String!
+}
+
+type SpokenLanguage {
+    iso_639_1: String!
+    name: String!
+}
+
+enum Status {
+    Rumored
+    Planned
+    In_Production
+    Post_Production
+    Released
+    Canceled
+}
+
+type Keyword {
+    id: Int!
+    name: String!
+}
+
+
