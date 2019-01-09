@@ -29,6 +29,8 @@ type Movie {
     vote_count: Int!
     keywords: [Keyword!]
     similarMovies: [Movie!]!
+    cast: [Cast!]!
+    crew: [Crew!]!
 }
 
 
@@ -68,4 +70,25 @@ type Keyword {
     name: String!
 }
 
+type Cast {
+    cast_id: Int!
+    character: String!
+    credit_id: String!
+    gender: Int
+    id: Int!
+    name: String!
+    order: Int!
+    profile_path: String
+}
+
+
+type Crew {
+    credit_id: Int!
+    department: String!
+    gender: Int
+    id: Int!
+    job: String!
+    name: String!
+    profile_path: String
+}
 

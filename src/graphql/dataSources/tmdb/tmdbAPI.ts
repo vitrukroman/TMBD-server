@@ -27,6 +27,14 @@ class TmdbAPI extends RESTDataSource {
     return await this.get(`movie/${id}/similar`);
   }
 
+  public async getMovieCredits(id: number) {
+    return await this.get(`movie/${id}/credits`);
+  }
+
+  public async getMovieImages(id: number) {
+    return await this.get(`movie/${id}/images`);
+  }
+
   protected willSendRequest(request: RequestOptions) {
     request.params.set("api_key", serverConfig.tmdbAPIKey);
   }
