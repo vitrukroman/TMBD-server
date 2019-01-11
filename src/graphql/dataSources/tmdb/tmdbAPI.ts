@@ -35,6 +35,10 @@ class TmdbAPI extends RESTDataSource {
     return await this.get(`movie/${id}/images`);
   }
 
+  public async getConfiguration() {
+    return await this.get(`configuration`);
+  }
+
   protected willSendRequest(request: RequestOptions) {
     request.params.set("api_key", serverConfig.tmdbAPIKey);
   }
