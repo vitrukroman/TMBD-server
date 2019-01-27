@@ -1,7 +1,8 @@
 type Query {
-    movie (id: Int!) : Movie!
+    movie (id: Int!, language: Language!) : Movie!
     movies: [Movie!]!
     configuration: Configuration!
+    languages: [Language!]!
 }
 
 type Configuration {
@@ -25,6 +26,7 @@ type Movie {
     homepage: String
     id: Int!
     imdb_id: String
+    language: Language!
     original_language: String!
     original_title: String!
     overview: String
@@ -112,6 +114,12 @@ type Mutation {
     _: Boolean
 }
 
+enum Language {
+    "English"
+    en
+    "Ukrainian"
+    uk
+}
 
 schema {
     query: Query,

@@ -1,4 +1,5 @@
 import { configurationResolver } from "./configurationResolver";
+import { languageResolver } from "./languagesResolver";
 import { movieResolver } from "./movieResolver";
 
 export default {
@@ -6,5 +7,6 @@ export default {
     movie: movieResolver,
     movies: () => [],
     configuration: configurationResolver,
+    languages: languageResolver,
   },
 };

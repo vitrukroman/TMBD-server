@@ -7,8 +7,8 @@ class TmdbAPI extends RESTDataSource {
     this.baseURL = serverConfig.tmdbAPIUrl;
   }
 
-  public async getMovie(id: number) {
-    return await this.get(`movie/${id}`);
+  public async getMovie(id: number, language: string) {
+    return await this.get(`movie/${id}?language=${language}`);
   }
 
   public async getPopularMovies(page = 1) {
