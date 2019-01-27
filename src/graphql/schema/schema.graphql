@@ -107,3 +107,13 @@ type Crew {
     profile_path: String
 }
 
+
+type Mutation {
+    _: Boolean
+}
+
+
+schema {
+    query: Query,
+    mutation: Mutation
+}
