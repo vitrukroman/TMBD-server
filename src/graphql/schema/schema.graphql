@@ -26,7 +26,6 @@ type Movie {
     homepage: String
     id: Int!
     imdb_id: String
-    language: Language!
     original_language: String!
     original_title: String!
     overview: String

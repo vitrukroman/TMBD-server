@@ -17,6 +17,5 @@ export const movieResolver: GraphQLFieldResolver<any, IContext> = async (_source
     cast: results[3].cast,
     crew: results[3].crew,
     images: results[4].images,
-    language: args.language,
   };
 };
