@@ -19,8 +19,8 @@ class TmdbAPI extends RESTDataSource {
     return data.results;
   }
 
-  public async getMovieKeywords(id: number) {
-    return await this.get(`movie/${id}/keywords`);
+  public async getMovieKeywords(id: number, language: string) {
+    return await this.get(`movie/${id}/keywords?language=${language}`);
   }
 
   public async getSimilarMovies(id: number) {
@@ -31,8 +31,8 @@ class TmdbAPI extends RESTDataSource {
     return await this.get(`movie/${id}/credits`);
   }
 
-  public async getMovieImages(id: number) {
-    return await this.get(`movie/${id}/images`);
+  public async getMovieImages(id: number, language: string) {
+    return await this.get(`movie/${id}/images?language=${language}`);
   }
 
   public async getConfiguration() {
