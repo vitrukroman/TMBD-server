@@ -23,8 +23,8 @@ class TmdbAPI extends RESTDataSource {
     return await this.get(`movie/${id}/keywords?language=${language}`);
   }
 
-  public async getSimilarMovies(id: number) {
-    return await this.get(`movie/${id}/similar`);
+  public async getSimilarMovies(id: number, language: string) {
+    return await this.get(`movie/${id}/similar?language=${language}`);
   }
 
   public async getMovieCredits(id: number) {

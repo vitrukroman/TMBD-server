@@ -3,6 +3,7 @@ type Query {
     movies: [Movie!]!
     configuration: Configuration!
     languages: [Language!]!
+    similarMovies(id: Int!, language: Language!): [Movie!]!
 }
 
 type Configuration {
